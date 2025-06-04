@@ -38,20 +38,28 @@ int BinaryToDecimal(int a[]) {
  * Lê o valor da DIP switch ao pressionar o botão B e exibe no display e console.
  */
 void comportamento_principal() {
+    static bool exibiu = false;
     if (button_b_is_pressed()) {
-        // Use a leitura real da DIP switch
-        uint8_t valorDIP = expansion_board_read_dip();
-        int bits[8];
-        for (int i = 0; i < 8; i++) {
-            bits[i] = (valorDIP >> (7 - i)) & 1;
-        }
-        int valorDecimal = BinaryToDecimal(bits);
-        printf("Valor lido da DIP switch: 0x%02X\n", valorDIP);
-        printf("Valor Decimal: %d\n", valorDecimal);
+        if (!exibiu) {
+            // Use a leitura real da DIP switch
+            uint8_t valorDIP = expansion_board_read_dip();
+            int bits[8];
+            for (int i = 0; i < 8; i++) {
+                bits[i] = (valorDIP >> (7 - i)) & 1;
+            }
+            int valorDecimal = BinaryToDecimal(bits);
+            printf("Valor lido da DIP switch: 0x%02X\n", valorDIP);
+            printf("Valor Decimal: %d\n", valorDecimal);
 
-        char msg[20];
-        snprintf(msg, sizeof(msg), "%d", valorDecimal);
-        print_texto(msg, 18, 3);
+            char msg[20];
+            snprintf(msg, sizeof(msg), "%d", valorDecimal);
+            clear_display(); // Limpa o display antes de exibir o novo valor
+            print_texto(msg, 18, 3);
+
+            exibiu = true;
+        }
+    } else {
+        exibiu = false;
     }
 }
 

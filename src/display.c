@@ -41,7 +41,6 @@ void print_texto(char *msg, uint pos_y, uint scale) {
     uint text_width = strlen(msg) * 6 * scale; // Calcula a largura do texto
     uint pos_x = (128 - text_width) / 2;      // Centraliza o texto no eixo X
 
-    clear_display(); // Limpa o display antes de exibir o texto
     ssd1306_draw_string(&disp, pos_x, pos_y, scale, msg);
     ssd1306_show(&disp);
 }
