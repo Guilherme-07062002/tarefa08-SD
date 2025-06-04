@@ -39,8 +39,6 @@ add_executable(tarefa2
     src/ssd1306.c
     src/display.c
     src/globals.c
-    src/joystick.c
-    src/led.c
     src/button.c
     src/logic.c
     )

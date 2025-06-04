@@ -2,8 +2,6 @@
 #include "pico/stdlib.h"
 #include "globals.h"
 #include "display.h"
-#include "joystick.h"
-#include "led.h"
 #include "button.h"
 #include "logic.h" // Incluído para usar as funções de lógica
 
