@@ -46,6 +46,7 @@
         "stdlib.h": "c",
         "pwm.h": "c",
         "led.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "expansion_board.h": "c"
     }
 }

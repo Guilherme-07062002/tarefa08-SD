@@ -3,7 +3,8 @@
 #include "globals.h"
 #include "display.h"
 #include "button.h"
-#include "logic.h" // Para funções de lógica
+#include "logic.h"
+#include "expansion_board.h"
 
 /**
  * @brief Inicializa periféricos: UART, I2C, display OLED e botões.
@@ -12,14 +13,7 @@ void inicializa() {
     stdio_init_all();
     button_init();
     init_display();
-}
-
-/**
- * @brief Simula a leitura de uma DIP switch.
- * @return Valor simulado representando o estado dos switches.
- */
-uint8_t simular_leitura_DIP() {
-    return 0b10101010; // Valor simulado da DIP switch
+    expansion_board_init();
 }
 
 /**
@@ -45,7 +39,8 @@ int BinaryToDecimal(int a[]) {
  */
 void comportamento_principal() {
     if (button_b_is_pressed()) {
-        uint8_t valorDIP = simular_leitura_DIP();
+        // Use a leitura real da DIP switch
+        uint8_t valorDIP = expansion_board_read_dip();
         int bits[8];
         for (int i = 0; i < 8; i++) {
             bits[i] = (valorDIP >> (7 - i)) & 1;
@@ -53,9 +48,9 @@ void comportamento_principal() {
         int valorDecimal = BinaryToDecimal(bits);
         printf("Valor lido da DIP switch: 0x%02X\n", valorDIP);
         printf("Valor Decimal: %d\n", valorDecimal);
-        
+
         char msg[20];
-        snprintf(msg, sizeof(msg), "%d", valorDecimal); // Corrigido para exibir decimal
+        snprintf(msg, sizeof(msg), "%d", valorDecimal);
         print_texto(msg, 18, 3);
     }
 }
@@ -67,7 +62,7 @@ int main() {
     inicializa();
     while (1) {
         comportamento_principal();
-        sleep_ms(100);
+        sleep_ms(10); // Use um valor maior para evitar uso excessivo de CPU
     }
     return 0;
 }

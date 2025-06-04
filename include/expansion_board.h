@@ -11,5 +11,11 @@
  */
 void expansion_board_init();
 
+/**
+ * @brief Lê o valor real da DIP switch conectada ao Expansion Board.
+ * @return Valor de 8 bits lido da DIP switch.
+ */
+uint8_t expansion_board_read_dip();
+
 
 #endif // EXPANSION_BOARD_H
