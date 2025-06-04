@@ -41,6 +41,7 @@ add_executable(tarefa2
     src/globals.c
     src/button.c
     src/logic.c
+    src/expansion_board.c
     )
 
 pico_set_program_name(tarefa2 "tarefa2")
