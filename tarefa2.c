@@ -10,8 +10,8 @@
  */
 void inicializa() {
     stdio_init_all();
-    init_display();
     button_init();
+    init_display();
 }
 
 /**
