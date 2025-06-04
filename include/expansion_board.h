@@ -7,7 +7,7 @@
 #define DATA_PIN 16 // Pino de Saída Serial
 
 /**
- * @brief Inicializa os pinos do Expansion Board.
+ * @brief Inicializa os pinos para o funcionamento do Expansion Board.
  */
 void expansion_board_init();
 
