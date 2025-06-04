@@ -10,14 +10,4 @@
  */
 extern bool program_running;
 
-/**
- * Guarda valor da entrada A
- */ 
-extern bool entrada_a;
-
-/**
- * Guarda valor da entrada B
- */
-extern bool entrada_b;
-
 #endif // GLOBALS_H

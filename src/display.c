@@ -5,7 +5,7 @@
 ssd1306_t disp; // Instância do display OLED
 
 /**
- * Inicializa o display OLED configurando o I2C e limpando o display.
+ * @brief Inicializa o display OLED configurando o I2C e limpando o display.
  */
 void init_display() {
     i2c_init(I2C_PORT, 400 * 1000); // Configura I2C a 400 KHz
@@ -21,11 +21,10 @@ void init_display() {
     ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
 
     clear_display(); // Limpa o display
-    print_texto((char *)opcoes[opcao_atual], 18, 3); // Exibe a opção inicial
 }
 
 /**
- * Limpa o conteúdo do display OLED.
+ * @brief Limpa o conteúdo do display OLED.
  */
 void clear_display() {
     ssd1306_clear(&disp);
@@ -33,8 +32,7 @@ void clear_display() {
 }
 
 /**
- * Exibe texto centralizado no display OLED.
- * 
+ * @brief Exibe texto centralizado no display OLED.
  * @param msg   Mensagem a ser exibida.
  * @param pos_y Posição Y no display.
  * @param scale Escala do texto.

@@ -2,7 +2,9 @@
 #include "globals.h"
 #include "button.h"
 
-void execute_logic_operation() {
-    
-    
+/**
+ * @brief Executa a operação principal de lógica (a ser implementada).
+ */
+void execute_operation() {
+    // Implementação futura
 }
