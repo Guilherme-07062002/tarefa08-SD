@@ -11,26 +11,6 @@
 extern bool program_running;
 
 /**
- * Posição atual no eixo Y para controle de menus.
- */
-extern unsigned int pos_y;
-
-/**
- * Índice da opção atualmente selecionada no menu.
- */
-extern unsigned int opcao_atual;
-
-/**
- * Lista de opções disponíveis no menu.
- */
-extern const char *opcoes[];
-
-/**
- * Total de opções disponíveis no menu.
- */
-extern const unsigned int total_opcoes;
-
-/**
  * Guarda valor da entrada A
  */ 
 extern bool entrada_a;
