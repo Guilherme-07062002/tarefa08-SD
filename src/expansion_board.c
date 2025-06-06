@@ -29,8 +29,7 @@ uint8_t expansion_board_read_dip() {
 
     // Lê 8 bits do registrador de deslocamento
     for (int i = 0; i < 8; i++) {
-        value <<= 1;
-        value |= gpio_get(DATA_PIN);
+        value |= gpio_get(DATA_PIN) << i;
         gpio_put(CLK_PIN, 1);
         sleep_ms(10);
         gpio_put(CLK_PIN, 0);
