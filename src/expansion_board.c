@@ -19,18 +19,22 @@ uint8_t expansion_board_read_dip() {
 
     // Carrega o estado dos switches no registrador
     gpio_put(LOAD_PIN, 0);
-    sleep_us(2); // tempo mínimo para latch
+    sleep_ms(50); // tempo mínimo para latch
+    gpio_put(CLK_PIN, 1);
+    sleep_ms(50);
+    gpio_put(CLK_PIN, 0);
+    sleep_ms(50);
     gpio_put(LOAD_PIN, 1);
-    sleep_us(2);
+    sleep_ms(50);
 
     // Lê 8 bits do registrador de deslocamento
     for (int i = 0; i < 8; i++) {
         value <<= 1;
         value |= gpio_get(DATA_PIN);
         gpio_put(CLK_PIN, 1);
-        sleep_us(2);
+        sleep_ms(10);
         gpio_put(CLK_PIN, 0);
-        sleep_us(2);
+        sleep_ms(10);
     }
     return value;
 }
